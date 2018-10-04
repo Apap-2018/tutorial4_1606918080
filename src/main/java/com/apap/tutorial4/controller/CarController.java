@@ -37,4 +37,10 @@ public class CarController {
         return "add";
     }
 
+    @RequestMapping(value = "/car/delete{carId}", method = RequestMethod.GET)
+    private String updateDealerSubmit(@PathVariable(value = "carId") Long carId) {
+        carService.deleteCarById(carId);
+        return "delete";
+    }
+
 }

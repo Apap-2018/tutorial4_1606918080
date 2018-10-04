@@ -23,4 +23,9 @@ public class DealerServiceImpl implements DealerService{
     public void addDealer (DealerModel dealer){
         dealerDB.save(dealer);
     }
+
+    @Override
+    public void deleteDealerById(Long dealerId){
+        dealerDB.delete(this.getDealerDetailById(dealerId).get());
+    }
 }

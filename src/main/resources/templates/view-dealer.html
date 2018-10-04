@@ -15,10 +15,15 @@
         <td th:text="'type : ' + ${car.type}"></td><br>
         <td th:text="'price : ' + ${car.price}"></td><br>
         <td th:text="'amount : ' + ${car.amount}"></td><br>
+
+        <a th:href="@{/car/delete{id}(id=${car.id})}">Delete Car</a>
     </div>
 
     <br>
     <br>
-    <a th:href="@{'/car/add/' + ${result.id}}" >add car</a><br>
+    <a th:href="@{/dealer/delete{id}(id=${result.id})}">Delete Dealer</a>
+    <br>
+    <a th:href="@{'/car/add/' + ${result.id}}" >Add car</a><br>
+    <td><a th:href="@{/}">Home</a></td>
 </body>
 </html>
