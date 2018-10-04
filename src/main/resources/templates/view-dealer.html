@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Pencarian Dealer</title>
+</head>
+<body>
+    Hasil :
+    <h3 th:text="'Alamat : ' + ${result.alamat}"></h3>
+    <h3 th:text="'Telepon : ' + ${result.noTelp}"></h3>
+
+    <a th:href="@{'/car/add/' + ${result.id}}" >add car</a><br>
+
+    <div th:each="car : ${listCar}">
+        <br>
+        <td th:text="'brand : ' + ${ca.brand}"></td><br>
+        <td th:text="'type : ' + ${car.type}"></td><br>
+        <td th:text="'price : ' + ${car.price}"></td><br>
+        <td th:text="'amount : ' + ${car.amount}"></td><br>
+    </div>
+</body>
+</html>
