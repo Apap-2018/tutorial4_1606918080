@@ -1,5 +1,6 @@
 package com.apap.tutorial4.controller;
 
+import com.apap.tutorial4.model.CarModel;
 import com.apap.tutorial4.model.DealerModel;
 import com.apap.tutorial4.service.CarService;
 import com.apap.tutorial4.service.DealerService;
@@ -9,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,9 +29,12 @@ public class DealerController {
     }
 
     @RequestMapping(value = "/dealer/view", method = RequestMethod.GET)
-    private String findDealer(Model model, String dealerId){
+    private String findDealer(Model model, @RequestParam String dealerId){
         DealerModel result = dealerService.getDealerDetailById(Long.parseLong(dealerId)).get();
+        dealerService.getDealerDetailById(Long.parseLong(dealerId)).get().getListCar().sort((car1,car2)-> {return(car1.getPrice()>car2.getPrice()?1:-1);});
+        List <CarModel> list = dealerService.getDealerDetailById(Long.parseLong(dealerId)).get().getListCar();
         model.addAttribute("result", result);
+        model.addAttribute("list", list);
         return "view-dealer";
     }
 

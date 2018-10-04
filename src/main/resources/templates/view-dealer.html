@@ -9,14 +9,16 @@
     <h3 th:text="'Alamat : ' + ${result.alamat}"></h3>
     <h3 th:text="'Telepon : ' + ${result.noTelp}"></h3>
 
-    <a th:href="@{'/car/add/' + ${result.id}}" >add car</a><br>
-
-    <div th:each="car : ${listCar}">
+    <div th:each="car : ${list}">
         <br>
-        <td th:text="'brand : ' + ${ca.brand}"></td><br>
+        <td th:text="'brand : ' + ${car.brand}"></td><br>
         <td th:text="'type : ' + ${car.type}"></td><br>
         <td th:text="'price : ' + ${car.price}"></td><br>
         <td th:text="'amount : ' + ${car.amount}"></td><br>
     </div>
+
+    <br>
+    <br>
+    <a th:href="@{'/car/add/' + ${result.id}}" >add car</a><br>
 </body>
 </html>
